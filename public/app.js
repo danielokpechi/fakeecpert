@@ -1,6 +1,6 @@
 const socket=io();
 const $=id=>document.getElementById(id);
-let me=null,token=null,room=null,role=null,selectedVote=null,interval=null,lastPhase=null;
+let me=null,token=localStorage.getItem('fe-player'),room=null,role=null,selectedVote=null,interval=null,lastPhase=null;
 function show(id,on=true){$(id).classList.toggle('hidden',!on)}
 function err(s){$('homeError').textContent=s||''}
 function enter(data){me=data.playerId;token=data.token;room=data.code;localStorage.setItem('fe-player',token);localStorage.setItem('fe-name',$('playerName').value.trim());history.replaceState({},'', '?room='+room);$('roomLabel').textContent=room;$('home').classList.add('hidden');show('game');err('');}
